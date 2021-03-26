@@ -1,0 +1,59 @@
+*:focus {
+  outline: 0 !important;
+}
+
+/*To do CSS */
+:root {
+  --primary-color: #0b0d38;
+  --secondary-color: #2e3bf3;
+  --text-light-color: white;
+  --text-dark-color: black;
+  --button-color: #f9a826;
+  --correct-answer: #60bf88;
+  --wrong-answer: #ea8282;
+}
+
+body {
+  font-size: 16px;
+  transition: 0.4s;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  background: rgb(228, 228, 228);
+}
+
+p {
+  margin: 0px;
+}
+
+.searchContainer {
+  background: var(--primary-color);
+  padding: 40px;
+}
+
+.searchContainer input {
+  padding: 10px;
+  border: 3px solid white;
+}
+.searchContainer button {
+  background: var(--secondary-color);
+  border: 3px solid white;
+  color: white;
+  padding: 10px 30px;
+}
+
+.viewJobs {
+  margin-top: 40px;
+}
+
+.jobElement {
+  background: white;
+  margin-bottom: 20px;
+}
+
+.jobElement .imageBox {
+  margin-right: 30px;
+}
+.jobElement .imageBox img {
+  width: 100%;
+  height: auto;
+}
