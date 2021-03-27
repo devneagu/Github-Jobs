@@ -48,6 +48,12 @@ p {
 .jobElement {
   background: white;
   margin-bottom: 20px;
+  cursor: pointer;
+}
+.jobElement:hover,
+.jobElement:focus {
+  -webkit-box-shadow: 0 2px 31px 0 rgb(0 16 74 / 9%);
+  box-shadow: 0 2px 31px 0 rgb(0 16 74 / 9%);
 }
 
 .jobElement .imageBox {

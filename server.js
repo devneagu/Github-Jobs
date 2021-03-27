@@ -7,11 +7,14 @@ const app = express();
 const port = process.env.PORT || 8000;
 app.use(express.static("dist"));
 
+var options = {
+  data: "Test",
+};
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "dist", "index.html"));
 });
 app.get("/job/:id", (req, res) => {
-  res.sendFile(path.join(__dirname, "dist", "index.html"));
+  res.sendFile(path.join(__dirname, "dist", "index.html"), options);
 });
 
 app.listen(port, () => {
@@ -39,9 +42,8 @@ app.get("/api/positions", async (req, res) => {
 
 app.get("/api/positionid", async (req, res) => {
   const id = req.query.id;
-  const markdown = req.query.markdown;
   await fetch(
-    "https://jobs.github.com/positions/" + id + ".json?" + "markdown=markdown"
+    "https://jobs.github.com/positions/" + id + ".json?" + "markdown=true"
   )
     .then((data) => data.text())
     .then((text) => res.send(text));

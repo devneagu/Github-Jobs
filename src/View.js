@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Router, Link } from "@reach/router";
+import moment from "moment";
 
 const View = function View() {
   const [searchValue, setSearchValue] = useState("");
@@ -22,34 +23,48 @@ const View = function View() {
     )
       .then((data) => data.text())
       .then((data) => {
-        setDataList(JSON.parse(data));
         console.log(JSON.parse(data));
+        setDataList(JSON.parse(data));
         setLoading(false);
       });
   }
-
+  function formatDate(value) {
+    return moment(new Date(value)).fromNow();
+  }
   function getJobs() {
     if (dataList.length == 0 && loading == false) API_getJobs();
     if (loading) return "Loading...";
     return (
       <div>
         {dataList.map((item) => (
-          <div className="jobElement " key={item.id}>
-            <div className="flex   p-6">
-              <div className="flex h-24 w-24 imageBox">
-                <img
-                  className="self-center mx-0 mr-6"
-                  src={item.company_logo}
-                />
+          <div className="" key={item.id}>
+            <Link to={`/job/${item.id}`}>
+              <div className="flex jobElement   p-6">
+                <div className="flex h-16 w-16 md:h-24 md:w-24 imageBox">
+                  <img
+                    className="self-center mx-0 mr-6"
+                    src={item.company_logo}
+                  />
+                </div>
+                <div className="w-full text-left self-center">
+                  <p className="mb-4">{item.company}</p>
+                  <p className="text-lg mb-4">{item.title}</p>
+                  <div className="flex">
+                    <div className="flex-3 mr-10">
+                      <p className="text-purple-500">{item.type}</p>
+                    </div>
+                    <div className="flex-1">
+                      <p className="text-gray-600">{item.location}</p>
+                    </div>
+                    <div className="flex-4">
+                      <p className="text-gray-600 flex-8">
+                        {formatDate(item.created_at)}
+                      </p>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div className="text-center md:text-left">
-                <p>{item.company}</p>
-                <p className="text-lg">{item.title}</p>
-                <p className="text-purple-500">{item.type}</p>
-                <p className="text-gray-600">{item.location}</p>
-                <p className="text-gray-600">{item.created_at}</p>
-              </div>
-            </div>
+            </Link>
           </div>
         ))}
       </div>
@@ -78,8 +93,9 @@ const View = function View() {
           <button>Search</button>
         </form>
       </div>
-
-      <div className="viewJobs">{getJobs()}</div>
+      <div className="flex">
+        <div className="viewJobs flex-1">{getJobs()}</div>
+      </div>
     </div>
   );
 };
