@@ -1,4 +1,1 @@
-# React Weather App
-
-npm install
-node server.js
+Barebone Github Jobs API with React 
