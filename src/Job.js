@@ -24,14 +24,14 @@ const Job = function Job(props) {
       <div>
         {dataList.map((item) => (
           <div key={item.id}>
-            <div className="flex">
-              <div className="flex-3 mr-10 pt-10">
+            <div className="md:flex">
+              <div className="md:flex-3 md:mr-10 pt-10 sm:pb-10">
                 <Link to="/">Back</Link>
                 <h1>How to apply?</h1>
                 {item.how_to_apply}
               </div>
 
-              <div className="flex-5 bg-white p-10">
+              <div className="md:flex-5 bg-white p-10">
                 <h1>
                   {item.title} [ {item.type} ]
                 </h1>
